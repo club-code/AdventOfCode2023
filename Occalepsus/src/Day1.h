@@ -5,7 +5,7 @@
 class Day1 : public DayInterface<int>
 {
 public:
-	Day1() : DayInterface(R"(C:\Users\jujuj\Documents\Projets informatique\AdventOfCode2023\input\InputD1.txt)") {};
+	Day1() : DayInterface(R"(C:\Users\jujuj\Documents\Projets informatique\AdventOfCode2023\input\InputDay1.txt)") {};
 	~Day1() override = default;
 
 	int run() override;
