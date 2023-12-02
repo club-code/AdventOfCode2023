@@ -27,6 +27,6 @@ fn main() -> io::Result<()> {
         };
         sum += first * 10 + last;
     }
-    println!("{}", sum);
+    println!("The result for part 1 is {}", sum);
     Ok(())
 }
