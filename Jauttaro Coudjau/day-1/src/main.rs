@@ -55,11 +55,6 @@ fn part2() -> io::Result<()> {
                                     .replace("nine","9") // yes, this is horrible.
                                     .chars()
                                     .filter(|c| c.is_digit(10)).collect::<Vec<char>>();
-        let print_chars = &numeric_chars;
-        for i in print_chars {
-            print!("{}", i);
-        }
-        print!("!");
         let first = match numeric_chars.first().expect("aled").to_digit(10) {
             Some(first) => first,
             _ => {
@@ -75,7 +70,6 @@ fn part2() -> io::Result<()> {
             },
         };
         sum += first * 10 + last;
-        println!("{}", first * 10 + last);
     }
     println!("The result for part 2 is {}", sum);
     Ok(())
