@@ -94,6 +94,6 @@ fn main() {
             println!("Erreur dans la partie 2");
             exit(2);
         },
-        Ok(()) => println!("Partie 2 ok."),
+        Ok(()) => println!("Partie 2 ok."), // I've won, but at what cost ?
     };
 }
