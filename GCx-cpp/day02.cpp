@@ -49,6 +49,7 @@ struct Game
     int total_blue;
     int total_green;
     bool is_doable;
+    int power;
     std::vector<Draw> draw;
 
     Game(std::string line);
@@ -69,10 +70,14 @@ Game::Game(std::string line)
     for (auto argument : split(line.substr(i1, std::string::npos), ";")){
         total_cubes = total_cubes + Draw{argument};
     }
+    total_blue = total_cubes.blue;
+    total_green = total_cubes.green;
+    total_red = total_cubes.red;
+    power = total_blue * total_red * total_green;
     std::cout << "total_cubes = { blue : "<<total_cubes.blue<<"; green : "<<total_cubes.green<<"; red : "<<total_cubes.red << " } ";
     std::cout << "Is doable : "<< (total_cubes.blue <= 14 && total_cubes.green <= 13 && total_cubes.red <= 12) << std::endl;
+    std::cout << "Power = " << power << std::endl;
     is_doable = (total_cubes.blue <= 14 && total_cubes.green <= 13 && total_cubes.red <= 12);
-
 }
 
 int day02part1(std::vector<std::string> lines)
@@ -86,6 +91,17 @@ int day02part1(std::vector<std::string> lines)
     return res;
 }
 
+int day02part2(std::vector<std::string> lines)
+{
+    int res = 0;
+    for (auto line : lines)
+    {
+        auto game = Game{line};
+        res += game.power;
+    }
+    return res;
+}
+
 int main(int argc, char **argv)
 {
     std::vector<std::string> lines;
@@ -95,12 +111,11 @@ int main(int argc, char **argv)
         if (std::strcmp(argv[1], "1") == 0)
         {
             int res = day02part1(lines);
-            std::cout << "Res 1 : " << res << std::endl;;
-            // std::cout << "Res 1 : " << day01part1(lines) << std::endl;
+            std::cout << "Res 1 : " << res << std::endl;
+        } else if (std::strcmp(argv[1], "2") == 0)
+        {
+            int res = day02part2(lines);
+            std::cout << "Res 2 : " << res << std::endl;
         }
-        // else if (std::strcmp(argv[1], "2") == 0)
-        // {
-        //     std::cout << "Res 2 : " << day01part2(lines) << std::endl;
-        // }
     }
 }
