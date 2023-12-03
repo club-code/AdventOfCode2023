@@ -36,6 +36,33 @@ fn part2() -> io::Result<()> {
     let reader = BufReader::new(input);
     let mut sum = 0;
     for line in reader.lines() {
+        let line_str = line?;
+        let numeric_chars = line_str.replace("one","1")
+                                    .replace("two","2")
+                                    .replace("three","3")
+                                    .replace("four","4")
+                                    .replace("five","5")
+                                    .replace("six","6")
+                                    .replace("seven","7")
+                                    .replace("eight","8")
+                                    .replace("nine","9")
+                                    .chars()
+                                    .filter(|c| c.is_digit(10)).collect::<Vec<char>>();
+        let first = match numeric_chars.first().expect("aled").to_digit(10) {
+            Some(first) => first,
+            _ => {
+                println!("epic fail omg");
+                continue;
+            },
+        };
+        let last = match numeric_chars.last().expect("aled").to_digit(10) {
+            Some(last) => last,
+            _ => {
+                println!("epic fail omg");
+                continue;
+            },
+        };
+        sum += first * 10 + last;
     }
     println!("{}", sum);
     Ok(())
