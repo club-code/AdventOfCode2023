@@ -1,11 +1,11 @@
 use std::fs::File;
 use std::io::{self, prelude::*, BufReader};
+use std::process::exit;
 
-fn main() -> io::Result<()> {
+fn part1() -> io::Result<()> {
+    let input = File::open("input.txt")?;
+    let reader = BufReader::new(input);
     let mut sum = 0;
-    let file = File::open("input.txt")?;
-    let reader = BufReader::new(file);
-
     for line in reader.lines() {
         // had "temporary value dropped while borrowed" error otherwise
         let idk_have_to_do_a_variable_will_check_the_rust_book_later = line?;
@@ -28,5 +28,27 @@ fn main() -> io::Result<()> {
         sum += first * 10 + last;
     }
     println!("The result for part 1 is {}", sum);
+    Ok(())
+}
+
+fn part2() -> io::Result<()> {
+    let input = File::open("input.txt")?;
+    let reader = BufReader::new(input);
+    let mut sum = 0;
+    for line in reader.lines() {
+    }
+    println!("{}", sum);
+    Ok(())
+}
+
+fn main() -> io::Result<()> {
+    match part1() {
+        Err(_) => {
+            println!("Erreur dans la partie 1");
+            exit(1);
+        },
+        Ok(()) => println!("Partie 1 ok."),
+    };
+    let _ = part2();
     Ok(())
 }
