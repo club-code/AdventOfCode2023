@@ -1,3 +1,7 @@
+mod load_input;
+
+mod day1;
+
 fn main() {
-    println!("Hello, world!");
+    println!("{} {}", day1::solve1(), day1::solve2());
 }
