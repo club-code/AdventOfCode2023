@@ -2,15 +2,18 @@
 
 #include "util/DayInterface.h"
 
-class DayT : public DayInterface<int>
+using day_t = int;
+
+class DayT : public DayInterface<day_t>
 {
 public:
 	DayT() : DayInterface(R"(C:\Users\jujuj\Documents\Projets informatique\AdventOfCode2023\input\InputDayT.txt)") {};
 	~DayT() override = default;
 
-	int run() override;
+	day_t run() override;
 
 private:
-	int part1(std::vector<std::string> const& input) const;
-	int part2(std::vector<std::string> const& input) const;
+	day_t part1();
+	day_t part2();
+	void parseInput(std::vector<std::string> const& input);
 };
