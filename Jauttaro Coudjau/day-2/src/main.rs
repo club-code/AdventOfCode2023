@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, prelude::*, BufReader};
+use itertools::Itertools;
 use std::process::exit;
 
 fn part1() -> io::Result<()> {
@@ -16,10 +17,10 @@ fn part1() -> io::Result<()> {
                                     |s| s.split_once(' ').expect("wrong split on \" \"")
                                     )
                                     .map(
-                                    |t| (t.1, t.0.parse::<i32>())
-                                    )
-                                )
-                            .reduce(|prev, next| prev);
+                                    |t| (t.1, t.0.parse::<i32>().unwrap()) as (&str, i32)
+                                    ).collect_tuple().unwrap()
+                                ).collect::<HashMap<i32, &str>>();
+                            //.reduce(|prev, next| prev);
                             //.collect::<Vec<Vec<&str>>>();
     }
     Ok(())
