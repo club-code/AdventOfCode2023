@@ -11,8 +11,8 @@ abstract class DaySolver(private val day: Int) {
     abstract fun firstPart(data:List<String>): String
     abstract fun secondPart(data:List<String>): String
     fun test() {
-        println("Step 1 : ${firstPart(testInput)}")
-        println("Step 2 : ${secondPart(testInput)}")
+        println("Test step 1 : ${firstPart(testInput)}")
+        println("Test step 2 : ${secondPart(testInput)}")
     }
 
     fun solve() {
