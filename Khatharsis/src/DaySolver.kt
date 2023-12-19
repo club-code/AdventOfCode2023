@@ -4,14 +4,15 @@ import java.nio.file.Paths
 import kotlin.io.path.exists
 import kotlin.system.measureTimeMillis
 
-open class DaySolver(private val day: Int) {
+abstract class DaySolver(private val day: Int) {
     private val year = 2023
     private val cookie = File("cookie.txt").useLines { it.toList() }.first()
-    open fun firstPart(): String = "unfinished"
-    open fun secondPart(): String = "unfinished"
+    abstract val testInput: List<String>
+    abstract fun firstPart(data:List<String>): String
+    abstract fun secondPart(data:List<String>): String
     fun test() {
-        firstPart()
-        secondPart()
+        println("Step 1 : ${firstPart(testInput)}")
+        println("Step 2 : ${secondPart(testInput)}")
     }
 
     fun solve() {
@@ -20,8 +21,8 @@ open class DaySolver(private val day: Int) {
                 measureTimeMillis {
                     println(
                         """Day $day responses:
-            Step 1 : ${firstPart()}
-            Step 2 : ${secondPart()}
+            Step 1 : ${firstPart(data)}
+            Step 2 : ${secondPart(data)}
             """.trimMargin()
                     )
                 }
